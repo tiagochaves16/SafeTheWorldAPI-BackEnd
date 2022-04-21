@@ -17,11 +17,8 @@ namespace Api
             Configuration = configuration;
         }
 
-        //readonly string CorsPolicy = "_corsPolicy";
-
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
@@ -31,25 +28,9 @@ namespace Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
             });
-            //services.AddCors(opt =>
-            //{
-            //    opt.AddPolicy(CorsPolicy,
-            //        builder => builder.WithOrigins("http://localhost:4200", "http://localhost:4200/enderecos")
-            //        .AllowAnyHeader()
-            //        .AllowAnyMethod());
-            //});
 
             services.AddCors();
 
-            // create cors policy
-
-
-            //services.AddCors(options =>
-            //    options.AddPolicy("DefaultCorsPolicy", builder => builder
-            //        .AllowAnyOrigin()
-            //        .AllowAnyHeader()
-            //        .AllowAnyMethod())
-            //);
             services.AddControllers();
 
             services.AddCors();
@@ -59,20 +40,8 @@ namespace Api
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //app.UseCors(builder => builder
-            //.AllowAnyOrigin()
-            //.AllowAnyMethod()
-            //.AllowAnyHeader());
-
-
-            app.UseRouting();
-            app.UseAuthorization();
-
-
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -83,8 +52,6 @@ namespace Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            //app.UseCors("*");
 
             app.UseCors(opt => opt.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 

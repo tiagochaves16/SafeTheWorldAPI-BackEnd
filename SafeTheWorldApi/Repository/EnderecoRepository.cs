@@ -28,7 +28,7 @@ namespace Api
             return await _context.Enderecos.FindAsync(id);
         }
 
-        public async Task<IEnumerable<Endereco>> GetAllAsync()
+        public async Task<IEnumerable<Endereco>> GetAll()
         {
             return await _context.Enderecos.ToListAsync();
         }

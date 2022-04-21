@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace SaveWorldApi.Migrations
+namespace SafeTheWorldApi.Migrations
 {
     [DbContext(typeof(MeuDbContext))]
-    [Migration("20220417211338_Inicial")]
-    partial class Inicial
+    [Migration("20220421190009_ModelandoDB")]
+    partial class ModelandoDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

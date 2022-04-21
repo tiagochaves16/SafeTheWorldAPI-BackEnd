@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SaveWorldApi.Migrations
+namespace SafeTheWorldApi.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class ModelandoDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -10,10 +10,11 @@ namespace Api.Data
 
         public DbSet<Endereco> Enderecos { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<Endereco>()
+               .HasKey(p => p.Id);
+  
             modelBuilder.Entity<Endereco>()
                 .Property(p => p.Nome)
                 .HasMaxLength(100);
@@ -43,21 +44,6 @@ namespace Api.Data
                 .Property(p => p.Estado)
                 .HasMaxLength(100);
 
-
-
-
-
-            //modelBuilder.Entity<Endereco>()
-            //    .HasData(
-            //    new Endereco
-            //    {
-            //        this.Rua = "Av Monaco",
-            //        Cep = "07150054",
-            //        Bairro = "Serodio",
-            //        Cidade = "Guarulhos",
-            //        Estado = "São Paulo",
-            //        Numero = "266"
-            //    });
         }
     }
 }

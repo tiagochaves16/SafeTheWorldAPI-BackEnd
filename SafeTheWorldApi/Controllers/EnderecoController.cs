@@ -1,6 +1,5 @@
 ﻿using Business.Interface;
 using Business.Models;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -25,11 +24,11 @@ namespace Api.Controllers
         {
             try
             {
-                var endereco = await _context.GetAllAsync();
+                var endereco = await _context.GetAll();
 
                 if (endereco == null)
                 {
-                    return NotFound("Endereço not found");
+                    return NotFound("Endereços náo encontrado");
                 }
                 return Ok(endereco);
             }
@@ -49,13 +48,12 @@ namespace Api.Controllers
 
                 if (endereco == null)
                 {
-                    return NotFound("Endereço not found");
+                    return NotFound("Endereço náo encontrado");
                 }
                 return Ok(endereco);
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -81,15 +79,16 @@ namespace Api.Controllers
             return Ok(enderecoDelete);
         }
 
-        [HttpPut]
-        public async Task<ActionResult> Update(int id,[FromBody] Endereco endereco)
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Update(int id, [FromBody] Endereco endereco)
         {
-           
+
             if (id != endereco.Id)
                 return BadRequest();
 
             await _context.Update(endereco);
-            
+
             return NoContent();
         }
     }
